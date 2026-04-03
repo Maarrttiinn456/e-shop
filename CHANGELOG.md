@@ -1,5 +1,16 @@
 # Changelog
 
+## [0.4.0] 2026-04-03
+
+**Změněné soubory:** `src/app/page.tsx`, `src/app/products/page.tsx`, `src/components/Header.tsx`, `src/components/TopSelling.tsx`, `src/lib/api.ts`, `src/components/LoadingSpinner.tsx`, `src/components/ProductCard.tsx`, `src/components/ProductList.tsx`
+
+- Přidána stránka produktového katalogu (`/products`) s filtrováním a řazením
+- Nová komponenta `ProductList` — mřížka produktových karet s podporou Suspense
+- Nová komponenta `ProductCard` — karta produktu s obrázkem, hodnocením hvězdičkami, slevou a cenou; ceny počítány jako integer v centech
+- Nová komponenta `LoadingSpinner` — indikátor načítání pro asynchronní operace
+- Rozšířeno `api.ts` o funkce pro načítání produktů a kategorií
+- Aktualizována hlavní stránka a header
+
 ## [0.3.0] 2026-04-03
 
 **Změněné soubory:** `src/components/TopSelling.tsx`, `src/app/page.tsx`
