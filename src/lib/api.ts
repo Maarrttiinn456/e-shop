@@ -2,8 +2,10 @@ import { Product, ProductsResponse } from '@/types/product';
 
 const API_BASE_URL = 'https://dummyjson.com';
 
-export async function fetchProducts(): Promise<Product[]> {
-    const response = await fetch(`${API_BASE_URL}/products`);
+export async function fetchProducts(limit: number = 0): Promise<Product[]> {
+    const response = await fetch(`${API_BASE_URL}/products?limit=${limit}`, {
+        cache: 'no-store', // Vynutí stažení nových dat při každém načtení
+    });
 
     if (!response.ok) {
         throw new Error(`Failed to fetch products: ${response.statusText}`);

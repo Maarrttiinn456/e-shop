@@ -1,11 +1,15 @@
 import { HeroSection } from '@/components/HeroSection';
-import { TopSelling } from '@/components/TopSelling';
+import { BuyNow } from '@/components/BuyNow';
+import { Suspense } from 'react';
+import { LoadingSpinner } from '@/components/LoadingSpinner';
 
 export default function Home() {
     return (
         <main>
             <HeroSection />
-            <TopSelling />
+            <Suspense fallback={<LoadingSpinner />}>
+                <BuyNow />
+            </Suspense>
         </main>
     );
 }

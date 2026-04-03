@@ -1,3 +1,11 @@
+import { ProductList } from '@/components/ProductList';
+import { LoadingSpinner } from '@/components/LoadingSpinner';
+import { Suspense } from 'react';
+
 export default function ProductsPage() {
-    return <div className="container py-14 lg:py-20">ss</div>;
+    return (
+        <Suspense fallback={<LoadingSpinner />}>
+            <ProductList />
+        </Suspense>
+    );
 }

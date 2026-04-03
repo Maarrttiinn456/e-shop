@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { Navigation } from './Navigation';
 import { SearchBar } from './SearchBar';
+import Link from 'next/link';
 
 export function Header() {
     const [menuOpen, setMenuOpen] = useState(false);
@@ -50,9 +51,11 @@ export function Header() {
                 </button>
 
                 {/* Logo – uprostřed na mobilu, vlevo na desktopu */}
-                <span className="flex-1 text-center md:flex-none md:text-left text-[28px] md:text-[32px] font-bold font-heading leading-none tracking-tight">
-                    SHOP.CO
-                </span>
+                <Link href="/">
+                    <span className="text-[28px] md:text-[32px] font-bold font-heading leading-none tracking-tight">
+                        SHOP.CO
+                    </span>
+                </Link>
 
                 {/* Desktop navigace */}
                 <Navigation />

@@ -2,7 +2,7 @@
 
 ## [0.4.0] 2026-04-03
 
-**Změněné soubory:** `src/app/page.tsx`, `src/app/products/page.tsx`, `src/components/Header.tsx`, `src/components/TopSelling.tsx`, `src/lib/api.ts`, `src/components/LoadingSpinner.tsx`, `src/components/ProductCard.tsx`, `src/components/ProductList.tsx`
+**Změněné soubory:** `src/app/page.tsx`, `src/app/products/page.tsx`, `src/components/Header.tsx`, `src/components/BuyNow.tsx`, `src/lib/api.ts`, `src/components/LoadingSpinner.tsx`, `src/components/ProductCard.tsx`, `src/components/ProductList.tsx`
 
 - Přidána stránka produktového katalogu (`/products`) s filtrováním a řazením
 - Nová komponenta `ProductList` — mřížka produktových karet s podporou Suspense
@@ -13,7 +13,7 @@
 
 ## [0.3.0] 2026-04-03
 
-**Změněné soubory:** `src/components/TopSelling.tsx`, `src/app/page.tsx`
+**Změněné soubory:** `src/components/BuyNow.tsx`, `src/app/page.tsx`
 
 ## [0.2.0] 2026-04-03
 
