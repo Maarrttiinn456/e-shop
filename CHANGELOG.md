@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.5.0] 2026-04-03
+
+**Změněné soubory:** `src/components/Footer.tsx`, `src/components/NewsletterForm.tsx`, `src/app/layout.tsx`
+
+- Přidána komponenta `Footer` — patička stránky s logem, popisem a navigačními sloupci (Company, Help, FAQ, Resources)
+- Přidána komponenta `NewsletterForm` — formulář pro přihlášení k newsletteru s e-mailovým inputem a tlačítkem; klientská komponenta (`'use client'`) s lokálním stavem
+- Patička zapojena do globálního layoutu (`layout.tsx`) — zobrazuje se na všech stránkách pod obsahem
+
 ## [0.4.0] 2026-04-03
 
 **Změněné soubory:** `src/app/page.tsx`, `src/app/products/page.tsx`, `src/components/Header.tsx`, `src/components/BuyNow.tsx`, `src/lib/api.ts`, `src/components/LoadingSpinner.tsx`, `src/components/ProductCard.tsx`, `src/components/ProductList.tsx`
