@@ -17,12 +17,34 @@ export function Header() {
                     onClick={() => setMenuOpen(!menuOpen)}
                 >
                     {menuOpen ? (
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                            <path d="M6 6l12 12M18 6L6 18" stroke="black" strokeWidth="1.8" strokeLinecap="round" />
+                        <svg
+                            width="24"
+                            height="24"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            aria-hidden="true"
+                        >
+                            <path
+                                d="M6 6l12 12M18 6L6 18"
+                                stroke="black"
+                                strokeWidth="1.8"
+                                strokeLinecap="round"
+                            />
                         </svg>
                     ) : (
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                            <path d="M3 6h18M3 12h18M3 18h18" stroke="black" strokeWidth="1.8" strokeLinecap="round" />
+                        <svg
+                            width="24"
+                            height="24"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            aria-hidden="true"
+                        >
+                            <path
+                                d="M3 6h18M3 12h18M3 18h18"
+                                stroke="black"
+                                strokeWidth="1.8"
+                                strokeLinecap="round"
+                            />
                         </svg>
                     )}
                 </button>
@@ -44,15 +66,38 @@ export function Header() {
                 <div className="flex items-center gap-3.5 shrink-0">
                     {/* Lupa – jen mobil */}
                     <button className="md:hidden" aria-label="Hledat">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                            <circle cx="11" cy="11" r="7" stroke="black" strokeWidth="1.8" />
-                            <path d="M16.5 16.5L21 21" stroke="black" strokeWidth="1.8" strokeLinecap="round" />
+                        <svg
+                            width="24"
+                            height="24"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            aria-hidden="true"
+                        >
+                            <circle
+                                cx="11"
+                                cy="11"
+                                r="7"
+                                stroke="black"
+                                strokeWidth="1.8"
+                            />
+                            <path
+                                d="M16.5 16.5L21 21"
+                                stroke="black"
+                                strokeWidth="1.8"
+                                strokeLinecap="round"
+                            />
                         </svg>
                     </button>
 
                     {/* Košík */}
                     <button aria-label="Košík">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                        <svg
+                            width="24"
+                            height="24"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            aria-hidden="true"
+                        >
                             <path
                                 d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"
                                 stroke="black"
@@ -60,16 +105,48 @@ export function Header() {
                                 strokeLinecap="round"
                                 strokeLinejoin="round"
                             />
-                            <path d="M3 6h18" stroke="black" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
-                            <path d="M16 10a4 4 0 01-8 0" stroke="black" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+                            <path
+                                d="M3 6h18"
+                                stroke="black"
+                                strokeWidth="1.8"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                            />
+                            <path
+                                d="M16 10a4 4 0 01-8 0"
+                                stroke="black"
+                                strokeWidth="1.8"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                            />
                         </svg>
                     </button>
 
                     {/* Uživatel */}
                     <button aria-label="Profil">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                            <circle cx="12" cy="8" r="4" stroke="black" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
-                            <path d="M4 20c0-4 3.582-7 8-7s8 3 8 7" stroke="black" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+                        <svg
+                            width="24"
+                            height="24"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            aria-hidden="true"
+                        >
+                            <circle
+                                cx="12"
+                                cy="8"
+                                r="4"
+                                stroke="black"
+                                strokeWidth="1.8"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                            />
+                            <path
+                                d="M4 20c0-4 3.582-7 8-7s8 3 8 7"
+                                stroke="black"
+                                strokeWidth="1.8"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                            />
                         </svg>
                     </button>
                 </div>
@@ -84,13 +161,37 @@ export function Header() {
                 <nav className="container flex flex-col gap-1 pb-6 pt-2">
                     <button className="flex items-center justify-between w-full py-3 text-lg font-body text-black border-b border-black/10">
                         Shop
-                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-                            <path d="M4 6l4 4 4-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                        <svg
+                            width="16"
+                            height="16"
+                            viewBox="0 0 16 16"
+                            fill="none"
+                            aria-hidden="true"
+                        >
+                            <path
+                                d="M4 6l4 4 4-4"
+                                stroke="currentColor"
+                                strokeWidth="1.5"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                            />
                         </svg>
                     </button>
-                    <a href="#" className="py-3 text-lg font-body text-black border-b border-black/10">On Sale</a>
-                    <a href="#" className="py-3 text-lg font-body text-black border-b border-black/10">New Arrivals</a>
-                    <a href="#" className="py-3 text-lg font-body text-black">Brands</a>
+                    <a
+                        href="#"
+                        className="py-3 text-lg font-body text-black border-b border-black/10"
+                    >
+                        On Sale
+                    </a>
+                    <a
+                        href="#"
+                        className="py-3 text-lg font-body text-black border-b border-black/10"
+                    >
+                        New Arrivals
+                    </a>
+                    <a href="#" className="py-3 text-lg font-body text-black">
+                        Brands
+                    </a>
                 </nav>
             </div>
         </header>
