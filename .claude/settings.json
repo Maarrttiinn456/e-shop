@@ -1,0 +1,25 @@
+{
+    "permissions": {
+        "allow": [
+            "Read",
+            "Write",
+            "Bash(git *)",
+            "Bash(npm *)",
+            "Edit(*.ts,*.tsx)"
+        ],
+        "deny": ["Read(./.env)", "Read(./.env.*)"]
+    },
+    "hooks": {
+        "PostToolUse": [
+            {
+                "matcher": "Write(*.ts,*.tsx)",
+                "hooks": [
+                    {
+                        "type": "command",
+                        "command": "npm run lint --silent 2>&1 | head -20"
+                    }
+                ]
+            }
+        ]
+    }
+}
