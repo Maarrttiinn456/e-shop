@@ -1,5 +1,16 @@
 # Changelog
 
+## [0.6.0] 2026-04-03
+
+**Změněné soubory:** `src/components/FeedbackCard.tsx`, `src/components/FeedbackSlider.tsx`, `src/components/FeedbackSliderClient.tsx`, `src/types/feedback.ts`, `src/app/page.tsx`, `src/app/globals.css`, `package.json`
+
+- Přidána sekce zákaznických recenzí na hlavní stránku
+- Nová komponenta `FeedbackCard` — karta recenze se jménem zákazníka, hvězdičkovým hodnocením, textem a odznakem ověřeného zákazníka
+- Nová komponenta `FeedbackSlider` — Server Component načítající recenze a obalující klientský slider
+- Nová komponenta `FeedbackSliderClient` — interaktivní slider (Swiper) s navigačními tlačítky, fade-in efektem a error stavem
+- Přidán typ `Feedback` do `src/types/feedback.ts`
+- Swiper CSS přesunut do globálního `globals.css` (z komponentové úrovně)
+
 ## [0.5.0] 2026-04-03
 
 **Změněné soubory:** `src/components/Footer.tsx`, `src/components/NewsletterForm.tsx`, `src/app/layout.tsx`
