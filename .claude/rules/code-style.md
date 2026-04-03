@@ -16,6 +16,22 @@
 - Výhradně **Tailwind utility třídy**, žádné inline styles (`style={{...}}`)
 - Žádné separátní CSS soubory pro komponenty (kromě globálního `globals.css`)
 
+## Layout — sekce a container
+
+Každá sekce stránky **vždy** používá `<section>` s `<div className="container">` uvnitř:
+
+```tsx
+<section>
+  <div className="container">
+    {/* obsah */}
+  </div>
+</section>
+```
+
+- Tailwind třída `container` zajišťuje jednotnou šířku obsahu napříč celým webem
+- Výjimka: `<header>` a `<footer>` mají `<div className="container">` přímo uvnitř sebe
+- Nikdy nedefinuj šířku/centrování obsahu jinak než přes `container`
+
 ## Next.js komponenty
 
 - **Server Components jako výchozí** — nepřidávej `'use client'` zbytečně

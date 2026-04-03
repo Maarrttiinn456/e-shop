@@ -1,14 +1,4 @@
 {
-    "permissions": {
-        "allow": [
-            "Read",
-            "Write",
-            "Bash(git *)",
-            "Bash(npm *)",
-            "Edit(*.ts,*.tsx)"
-        ],
-        "deny": ["Read(./.env)", "Read(./.env.*)"]
-    },
     "hooks": {
         "PostToolUse": [
             {
