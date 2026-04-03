@@ -1,5 +1,9 @@
 # Changelog
 
+## [0.3.0] 2026-04-03
+
+**Změněné soubory:** `src/components/TopSelling.tsx`, `src/app/page.tsx`
+
 ## [0.2.0] 2026-04-03
 
 **Změněné soubory:** `src/components/Header.tsx`
