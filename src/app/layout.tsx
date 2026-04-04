@@ -33,7 +33,7 @@ export default function RootLayout({
             <body className="min-h-full flex flex-col">
                 <CartHydration />
                 <Header />
-                <main className="flex-1 pt-[68px] md:pt-[80px]">
+                <main className="flex-1 pt-[68px] md:pt-[96px]">
                     {children}
                 </main>
                 <Footer />
