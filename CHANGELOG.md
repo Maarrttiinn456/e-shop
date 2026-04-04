@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.8.0] 2026-04-04
+
+**Změněné soubory:** `src/components/HeroSection.tsx`, `src/lib/api.ts`
+
+- Refaktoring `HeroSection` — přechod z dvousloupcového layoutu na centrovaný design, odebrán obrázek modelu, navigační `<button>` nahrazen sémantickým `<Link href="/products">`
+- Optimalizace cachování v `api.ts` — `cache: 'no-store'` nahrazeno ISR revalidací `next: { revalidate: 60 }`
+
 ## [0.7.0] 2026-04-04
 
 **Změněné soubory:** `src/lib/store.ts`, `src/types/cart.ts`, `src/components/AddCartButton.tsx`, `src/components/CartHydration.tsx`, `src/app/layout.tsx`, `src/components/Header.tsx`, `src/components/ProductCard.tsx`, `.claude/rules/code-style.md`
