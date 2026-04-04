@@ -4,7 +4,7 @@
 
 - Vždy TypeScript, žádné `any` bez komentáře `// TODO: doplnit typ — důvod`
 - Typy definuj v `/types`, importuj explicitně
-- Preferuj `interface` pro objektové typy, `type` pro union/intersection
+- Vždy `type`, nikdy `interface` — a to i pro objektové typy
 
 ## Exporty
 
@@ -40,9 +40,10 @@ Každá sekce stránky **vždy** používá `<section>` s `<div className="conta
 
 ## E-commerce — ceny
 
-- Ceny **vždy jako integer** (haléře/centy): `1999` = 19,99 Kč
+- Ceny **vždy jako integer** (haléře/centy): `1999` = 19,99 €
 - **Nikdy float**: ne `19.99`, vždy `1999`
 - Formátování pro zobrazení: `(price / 100).toFixed(2)`
+- Měna je **euro (€)**, nikdy Kč
 
 ## Error handling
 

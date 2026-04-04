@@ -1,5 +1,18 @@
 # Changelog
 
+## [0.7.0] 2026-04-04
+
+**Změněné soubory:** `src/lib/store.ts`, `src/types/cart.ts`, `src/components/AddCartButton.tsx`, `src/components/CartHydration.tsx`, `src/app/layout.tsx`, `src/components/Header.tsx`, `src/components/ProductCard.tsx`, `.claude/rules/code-style.md`
+
+- Přidán Zustand store pro košík (`store.ts`) s persistencí do localStorage a SSR-safe hydratací (`skipHydration: true`)
+- Nový typ `CartItem` sdružující produkt a množství
+- Nová komponenta `AddCartButton` — klientské tlačítko přidávající produkt do košíku
+- Nová komponenta `CartHydration` — zajišťuje rehydrataci store na klientu po SSR
+- `Header` rozšířen o počítadlo položek košíku přes Zustand selektor
+- `ProductCard` rozšířena o tlačítko `AddCartButton`
+- Opraveno renderování `0` při nulové slevě (`discountPercentage > 0`)
+- Aktualizována pravidla projektu: vždy `type` (nikdy `interface`), měna je € nikoli Kč
+
 ## [0.6.0] 2026-04-03
 
 **Změněné soubory:** `src/components/FeedbackCard.tsx`, `src/components/FeedbackSlider.tsx`, `src/components/FeedbackSliderClient.tsx`, `src/types/feedback.ts`, `src/app/page.tsx`, `src/app/globals.css`, `package.json`

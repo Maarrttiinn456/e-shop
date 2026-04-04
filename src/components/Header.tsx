@@ -4,12 +4,16 @@ import { useState } from 'react';
 import { Navigation } from './Navigation';
 import { SearchBar } from './SearchBar';
 import Link from 'next/link';
+import { useCartStore } from '@/lib/store';
+import { ShoppingCart } from 'lucide-react';
 
 export function Header() {
     const [menuOpen, setMenuOpen] = useState(false);
 
+    const allCartItems = useCartStore((state) => state.itemCount());
+
     return (
-        <header className="w-full border-b border-black/10 relative">
+        <header className="fixed top-0 left-0 right-0 z-50 bg-white border-b border-black/10">
             <div className="container flex items-center py-5 md:py-6 md:gap-10">
                 {/* Hamburger / Křížek – jen mobil */}
                 <button
@@ -57,8 +61,9 @@ export function Header() {
                     </span>
                 </Link>
 
-                {/* Desktop navigace */}
+                {/* Desktop navigace
                 <Navigation />
+                 */}
 
                 {/* SearchBar – jen desktop */}
                 <div className="hidden md:flex flex-1">
@@ -93,36 +98,13 @@ export function Header() {
                     </button>
 
                     {/* Košík */}
-                    <button aria-label="Košík">
-                        <svg
-                            width="24"
-                            height="24"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            aria-hidden="true"
-                        >
-                            <path
-                                d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"
-                                stroke="black"
-                                strokeWidth="1.8"
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                            />
-                            <path
-                                d="M3 6h18"
-                                stroke="black"
-                                strokeWidth="1.8"
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                            />
-                            <path
-                                d="M16 10a4 4 0 01-8 0"
-                                stroke="black"
-                                strokeWidth="1.8"
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                            />
-                        </svg>
+                    <button aria-label="Košík" className="relative">
+                        <ShoppingCart size={24} strokeWidth={1.8} />
+                        {allCartItems > 0 && (
+                            <span className="absolute -top-2 -right-2 bg-[#FF3333] text-white text-[10px] font-body font-semibold leading-none w-[18px] h-[18px] rounded-full flex items-center justify-center">
+                                {allCartItems}
+                            </span>
+                        )}
                     </button>
 
                     {/* Uživatel */}
