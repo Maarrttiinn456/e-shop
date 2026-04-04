@@ -1,12 +1,32 @@
 'use client';
 
+import { useState } from 'react';
 import { useCartStore } from '@/lib/store';
 
 export function CartSummary() {
     const items = useCartStore((state) => state.items);
-    const subtotal = items.reduce((sum, i) => sum + i.product.price * i.quantity, 0);
+    const subtotal = items.reduce(
+        (sum, i) => sum + i.product.price * i.quantity,
+        0,
+    );
     const shipping: number = 0;
     const total = subtotal + shipping;
+    const [loading, setLoading] = useState(false);
+
+    async function handleCheckout() {
+        setLoading(true);
+        const res = await fetch('/api/checkout', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ items }),
+        });
+        if (!res.ok) {
+            setLoading(false);
+            return;
+        }
+        const { url } = await res.json();
+        window.location.href = url;
+    }
 
     return (
         <div className="flex flex-col gap-3 border border-black/10 rounded-2xl p-6">
@@ -22,9 +42,7 @@ export function CartSummary() {
             <div className="flex justify-between font-body text-sm">
                 <span className="text-black/60">Doprava</span>
                 <span>
-                    {shipping === 0
-                        ? 'Zdarma'
-                        : `${shipping.toFixed(2)} €`}
+                    {shipping === 0 ? 'Zdarma' : `${shipping.toFixed(2)} €`}
                 </span>
             </div>
 
@@ -35,9 +53,11 @@ export function CartSummary() {
 
             <button
                 type="button"
-                className="mt-2 w-full py-3 rounded-full bg-black text-white font-body text-sm font-medium hover:bg-black/80 transition-colors"
+                onClick={handleCheckout}
+                disabled={loading || items.length === 0}
+                className="mt-2 w-full py-3 rounded-full bg-black text-white font-body text-sm font-medium hover:bg-black/80 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
             >
-                Přejít k platbě
+                {loading ? 'Přesměrovávám...' : 'Přejít k platbě'}
             </button>
         </div>
     );

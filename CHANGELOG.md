@@ -1,5 +1,14 @@
 # Changelog
 
+## [1.1.0] 2026-04-04
+
+**Změněné soubory:** `src/app/api/checkout/route.ts` (nový), `src/app/checkout/success/page.tsx` (nový), `src/components/cart/CartSummary.tsx`, `package.json`, `package-lock.json`
+
+- Integrace Stripe Checkout — nový API endpoint `POST /api/checkout` vytváří Stripe session a přesměrovává na platební bránu
+- Nová stránka `checkout/success` — zobrazí se po úspěšné platbě, automaticky vyčistí košík přes Zustand store
+- `CartSummary` rozšířena o tlačítko „Přejít k platbě" s loading stavem a error handling
+- Přidána závislost `stripe` do `package.json`
+
 ## [1.0.0] 2026-04-04
 
 **Změněné soubory:** `src/components/cart/CartItems.tsx`, `src/components/cart/CartSummary.tsx`, `src/lib/store.ts`, `src/app/cart/page.tsx`, `src/components/Header.tsx`, `src/components/HeaderActionButtons.tsx`
