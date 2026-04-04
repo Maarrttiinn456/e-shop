@@ -58,7 +58,7 @@ export function ProductGallery({ productPromise }: Props) {
                             src={src}
                             alt="Product"
                             fill
-                            className="object-cover"
+                            className="object-cover relative"
                         />
                     </a>
                 ))}
