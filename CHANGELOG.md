@@ -1,5 +1,14 @@
 # Changelog
 
+## [1.0.0] 2026-04-04
+
+**Změněné soubory:** `src/components/cart/CartItems.tsx`, `src/components/cart/CartSummary.tsx`, `src/lib/store.ts`, `src/app/cart/page.tsx`, `src/components/Header.tsx`, `src/components/HeaderActionButtons.tsx`
+
+- Implementace funkčního košíku — Zustand store s persistencí (`cart-storage`), operace add/remove/decrease/clear
+- `CartItems` — seznam položek s náhledem obrázku, ovládáním množství (+/−/trash) a zobrazením ceny
+- `CartSummary` — dynamický mezisoučet, doprava (zdarma) a celková cena napojená na store
+- `Header` a `HeaderActionButtons` — badge s počtem položek v košíku v reálném čase
+
 ## [0.9.0] 2026-04-04
 
 **Změněné soubory:** `src/app/product/[productId]/page.tsx`, `src/app/product/[productId]/error.tsx` (nový), `src/components/productDetail/ProductSummary.tsx` (nový), `src/components/productDetail/ProductGallery.tsx` (nový), `src/components/productDetail/ProductDetailSkeleton.tsx` (nový), `src/lib/api.ts`, `src/app/globals.css`, `src/app/layout.tsx`
