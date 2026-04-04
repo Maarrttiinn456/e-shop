@@ -1,4 +1,4 @@
-import Image from 'next/image';
+import Link from 'next/link';
 
 function StarLarge({ className }: { className?: string }) {
     return (
@@ -44,60 +44,44 @@ export function HeroSection() {
     return (
         <section className="bg-[#F2F0F1] overflow-hidden">
             <div className="container">
-                <div className="grid grid-cols-1 lg:grid-cols-2 min-h-[500px] lg:min-h-[663px]">
-                    {/* Levý sloupec */}
-                    <div className="relative flex flex-col justify-center py-16 lg:py-24 lg:pr-8">
-                        <StarLarge className="absolute top-10 right-0 w-14 h-14 hidden lg:block" />
+                <div className="relative flex flex-col items-center text-center py-20 lg:py-32">
+                    <StarLarge className="absolute top-8 left-0 w-14 h-14 hidden lg:block" />
+                    <StarSmall className="absolute top-12 right-8 w-8 h-8 hidden lg:block" />
+                    <StarSmall className="absolute bottom-16 left-12 w-6 h-6 hidden lg:block" />
+                    <StarLarge className="absolute bottom-8 right-0 w-10 h-10 hidden lg:block" />
 
-                        <h1 className="font-heading font-black text-4xl sm:text-5xl lg:text-[64px] leading-[1.08] tracking-tight uppercase mb-5 max-w-lg">
-                            Find Clothes That Matches Your Style
-                        </h1>
+                    <h1 className="font-heading font-black text-4xl sm:text-5xl lg:text-[72px] leading-[1.05] tracking-tight uppercase mb-6 max-w-3xl">
+                        Discover Products You'll Love
+                    </h1>
 
-                        <StarSmall className="absolute top-[calc(50%-60px)] right-0 w-8 h-8 hidden lg:block" />
+                    <p className="font-body text-black/60 text-base lg:text-lg mb-10 max-w-xl">
+                        Browse through our curated selection of high-quality
+                        products, handpicked to fit your lifestyle and every
+                        everyday need.
+                    </p>
 
-                        <p className="font-body text-black/60 text-base mb-8 max-w-[545px]">
-                            Browse through our diverse range of meticulously
-                            crafted garments, designed to bring out your
-                            individuality and cater to your sense of style.
-                        </p>
+                    <Link
+                        href="/products"
+                        className="bg-black text-white font-body rounded-full px-14 py-4 text-base hover:bg-black/80 transition-colors mb-16 lg:mb-20"
+                    >
+                        Shop Now
+                    </Link>
 
-                        <button
-                            type="button"
-                            className="bg-black text-white font-body rounded-full px-14 py-4 text-base w-fit hover:bg-black/80 transition-colors mb-12 lg:mb-16"
-                        >
-                            Shop Now
-                        </button>
-
-                        {/* Statistiky */}
-                        <div className="flex flex-row flex-wrap gap-6 sm:gap-0 border-t border-black/10 pt-8">
-                            {stats.map((stat, i) => (
-                                <div
-                                    key={stat.label}
-                                    className={`flex-1 ${i > 0 ? 'sm:border-l sm:border-black/10 sm:pl-8' : ''}`}
-                                >
-                                    <p className="font-heading font-bold text-3xl lg:text-[40px]">
-                                        {stat.value}
-                                    </p>
-                                    <p className="font-body text-black/60 text-sm mt-1">
-                                        {stat.label}
-                                    </p>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-
-                    {/* Pravý sloupec — obrázek (vlož /public/hero-model.png) */}
-                    <div className="relative hidden lg:block bg-[#F2F0F1]">
-                        <StarLarge className="absolute top-16 right-6 w-[104px] h-[104px] z-10" />
-                        <StarSmall className="absolute bottom-28 left-10 w-[56px] h-[56px] z-10" />
-                        <Image
-                            src="/hero-model.png"
-                            alt="Žena oblečená v módním outfitu prezentující kolekci SHOP.CO"
-                            fill
-                            sizes="(max-width: 1024px) 0px, 50vw"
-                            className="object-contain object-bottom"
-                            priority
-                        />
+                    {/* Statistiky */}
+                    <div className="w-full flex flex-row flex-wrap justify-center gap-6 sm:gap-0 border-t border-black/10 pt-8">
+                        {stats.map((stat, i) => (
+                            <div
+                                key={stat.label}
+                                className={`flex-1 min-w-[120px] max-w-[200px] ${i > 0 ? 'sm:border-l sm:border-black/10 sm:pl-8' : ''}`}
+                            >
+                                <p className="font-heading font-bold text-3xl lg:text-[40px]">
+                                    {stat.value}
+                                </p>
+                                <p className="font-body text-black/60 text-sm mt-1">
+                                    {stat.label}
+                                </p>
+                            </div>
+                        ))}
                     </div>
                 </div>
             </div>

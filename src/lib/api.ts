@@ -4,7 +4,7 @@ const API_BASE_URL = 'https://dummyjson.com';
 
 export async function fetchProducts(limit: number = 0): Promise<Product[]> {
     const response = await fetch(`${API_BASE_URL}/products?limit=${limit}`, {
-        cache: 'no-store', // Vynutí stažení nových dat při každém načtení
+        next: { revalidate: 60 },
     });
 
     if (!response.ok) {
