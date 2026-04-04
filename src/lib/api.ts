@@ -16,6 +16,18 @@ export async function fetchProducts(limit: number = 0): Promise<Product[]> {
     return data.products;
 }
 
+export async function fetchProductById(id: number): Promise<Product> {
+    const response = await fetch(`${API_BASE_URL}/products/${id}`, {
+        next: { revalidate: 60 },
+    });
+
+    if (!response.ok) {
+        throw new Error(`Failed to fetch product ${id}: ${response.statusText}`);
+    }
+
+    return response.json();
+}
+
 export async function fetchRandomProducts(limit: number): Promise<Product[]> {
     const randomSkip = Math.floor(Math.random() * 95);
 

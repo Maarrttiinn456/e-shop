@@ -1,5 +1,15 @@
 # Changelog
 
+## [0.9.0] 2026-04-04
+
+**Změněné soubory:** `src/app/product/[productId]/page.tsx`, `src/app/product/[productId]/error.tsx` (nový), `src/components/productDetail/ProductSummary.tsx` (nový), `src/components/productDetail/ProductGallery.tsx` (nový), `src/components/productDetail/ProductDetailSkeleton.tsx` (nový), `src/lib/api.ts`, `src/app/globals.css`, `src/app/layout.tsx`
+
+- Implementace stránky detailu produktu (`/product/[productId]`) — dynamická route s galérií obrázků (lightgallery), výběrem velikosti, počtu kusů a tlačítkem Add to Cart
+- Správné zacházení s cenami — API float převeden na centy přes `Math.round(price * 100)`, zobrazení v €
+- Loading stav řešen přes `Suspense` + `ProductDetailSkeleton`, error stav přes `error.tsx`
+- Responzivní layout — `grid-cols-1 lg:grid-cols-2`
+- Přidán import `lightgallery/css/lightgallery.css` do globálního `globals.css`
+
 ## [0.8.0] 2026-04-04
 
 **Změněné soubory:** `src/components/HeroSection.tsx`, `src/lib/api.ts`
