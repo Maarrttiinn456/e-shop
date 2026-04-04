@@ -2,7 +2,10 @@ import { Feedback } from '@/types/feedback';
 
 function Stars({ rating }: { rating: number }) {
     return (
-        <div className="flex items-center gap-1" aria-label={`Hodnocení ${rating} z 5`}>
+        <div
+            className="flex items-center gap-1"
+            aria-label={`Hodnocení ${rating} z 5`}
+        >
             {[1, 2, 3, 4, 5].map((star) => (
                 <svg
                     key={star}
@@ -42,7 +45,9 @@ export function FeedbackCard({ feedback }: { feedback: Feedback }) {
         <article className="flex flex-col gap-3 p-6 rounded-2xl border border-black/10 bg-white h-full">
             <Stars rating={feedback.rating} />
             <div className="flex items-center gap-2">
-                <span className="font-heading font-bold text-base">{feedback.name}</span>
+                <span className="font-heading font-bold text-base">
+                    {feedback.name}
+                </span>
                 {feedback.verified && <VerifiedIcon />}
             </div>
             <p className="font-body text-sm text-black/60 leading-relaxed">

@@ -17,10 +17,6 @@ export function FeedbackSliderClient({ feedbacks }: FeedbackSliderClientProps) {
     const [ready, setReady] = useState(false);
     const [error, setError] = useState(false);
 
-    if (error) {
-        return <p className="font-body text-sm text-black/60">Recenze se nepodařilo načíst.</p>;
-    }
-
     return (
         <>
             <div className="flex items-center justify-between mb-10 md:mb-14">
@@ -76,7 +72,6 @@ export function FeedbackSliderClient({ feedbacks }: FeedbackSliderClientProps) {
                     640: { slidesPerView: 2.2 },
                     1024: { slidesPerView: 3.2 },
                 }}
-                loop
                 onSwiper={() => setReady(true)}
                 onError={() => setError(true)}
                 className={`!overflow-visible pb-2 transition-opacity duration-300 ${ready ? 'opacity-100' : 'opacity-0'}`}
