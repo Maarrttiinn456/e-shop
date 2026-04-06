@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.2.0] 2026-04-06
+
+**Změněné soubory:** `src/components/FeedbackSlider.tsx`, `src/components/FeedbackSliderClient.tsx`, `src/types/comment.ts` (nový), `src/components/AddCartButton.tsx`, `src/components/HeaderActionButtons.tsx`, `src/components/Navigation.tsx`, `src/components/NewsletterForm.tsx`, `src/components/cart/CartItems.tsx`, `src/components/cart/CartSummary.tsx`, `src/components/productDetail/ProductGallery.tsx`, `src/components/productDetail/ProductSummaryAction.tsx`, `src/app/layout.tsx`, `src/lib/api.ts`, `package.json`, `package-lock.json`
+
+- Přidán slider zákaznických recenzí — `FeedbackSlider` (Server Component) načítá komentáře z API a předává je do `FeedbackSliderClient` (Swiper carousel s navigačními tlačítky)
+- Nový typ `Comment` a `CommentsResponse` v `src/types/comment.ts`, nová funkce `fetchComments` v `api.ts`
+- Drobné úpravy v komponentách košíku, navigace, newsletteru a detailu produktu
+
 ## [1.1.0] 2026-04-04
 
 **Změněné soubory:** `src/app/api/checkout/route.ts` (nový), `src/app/checkout/success/page.tsx` (nový), `src/components/cart/CartSummary.tsx`, `package.json`, `package-lock.json`

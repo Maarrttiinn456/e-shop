@@ -1,7 +1,7 @@
 export function Navigation() {
     return (
         <nav className="hidden md:flex items-center gap-6">
-            <button className="flex items-center gap-1 text-base font-body text-black">
+            <button className="flex items-center gap-1 text-base font-body text-black cursor-pointer">
                 Shop
                 <svg
                     width="16"
@@ -19,13 +19,13 @@ export function Navigation() {
                     />
                 </svg>
             </button>
-            <a href="#" className="text-base font-body text-black">
+            <a href="#" className="text-base font-body text-black cursor-pointer">
                 On Sale
             </a>
-            <a href="#" className="text-base font-body text-black">
+            <a href="#" className="text-base font-body text-black cursor-pointer">
                 New Arrivals
             </a>
-            <a href="#" className="text-base font-body text-black">
+            <a href="#" className="text-base font-body text-black cursor-pointer">
                 Brands
             </a>
         </nav>

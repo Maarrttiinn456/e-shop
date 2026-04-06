@@ -1,4 +1,5 @@
 import { Product, ProductsResponse } from '@/types/product';
+import { Comment, CommentsResponse } from '@/types/comment';
 
 const API_BASE_URL = 'https://dummyjson.com';
 
@@ -22,7 +23,9 @@ export async function fetchProductById(id: number): Promise<Product> {
     });
 
     if (!response.ok) {
-        throw new Error(`Failed to fetch product ${id}: ${response.statusText}`);
+        throw new Error(
+            `Failed to fetch product ${id}: ${response.statusText}`,
+        );
     }
 
     return response.json();
@@ -45,4 +48,18 @@ export async function fetchRandomProducts(limit: number): Promise<Product[]> {
     const data: ProductsResponse = await response.json();
 
     return data.products.sort(() => Math.random() - 0.5);
+}
+
+export async function fetchComments(limit: number = 0): Promise<Comment[]> {
+    const response = await fetch(`${API_BASE_URL}/comments?limit=${limit}`, {
+        cache: 'force-cache', // Vynutí stažení nových dat při každém načtení
+    });
+
+    if (!response.ok) {
+        throw new Error(`Failed to fetch comments: ${response.statusText}`);
+    }
+
+    const data: CommentsResponse = await response.json();
+
+    return data.comments;
 }

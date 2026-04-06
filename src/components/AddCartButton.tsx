@@ -2,6 +2,7 @@
 
 import { Product } from '@/types/product';
 import { useCartStore } from '@/lib/store';
+import { toast } from 'sonner';
 
 export function AddCartButton({ product }: { product: Product }) {
     const addItem = useCartStore((state) => state.addItem);
@@ -9,7 +10,7 @@ export function AddCartButton({ product }: { product: Product }) {
     return (
         <button
             type="button"
-            onClick={() => addItem(product)}
+            onClick={() => { addItem(product); toast.success('Přidáno do košíku'); }}
             className="w-full cursor-pointer font-body text-sm font-medium py-2.5 rounded-full bg-black text-white hover:bg-black/80 transition-colors"
         >
             Do košíku

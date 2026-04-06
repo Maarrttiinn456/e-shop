@@ -28,7 +28,7 @@ export function FeedbackSliderClient({ feedbacks }: FeedbackSliderClientProps) {
                         type="button"
                         aria-label="Předchozí recenze"
                         onClick={() => swiperRef.current?.swiper.slidePrev()}
-                        className="w-9 h-9 flex items-center justify-center rounded-full border border-black/20 hover:bg-black hover:text-white transition-colors"
+                        className="w-9 h-9 flex items-center justify-center rounded-full border border-black/20 hover:bg-black hover:text-white transition-colors cursor-pointer"
                     >
                         <svg
                             viewBox="0 0 24 24"
@@ -46,7 +46,7 @@ export function FeedbackSliderClient({ feedbacks }: FeedbackSliderClientProps) {
                         type="button"
                         aria-label="Další recenze"
                         onClick={() => swiperRef.current?.swiper.slideNext()}
-                        className="w-9 h-9 flex items-center justify-center rounded-full border border-black/20 hover:bg-black hover:text-white transition-colors"
+                        className="w-9 h-9 flex items-center justify-center rounded-full border border-black/20 hover:bg-black hover:text-white transition-colors cursor-pointer"
                     >
                         <svg
                             viewBox="0 0 24 24"
@@ -72,6 +72,7 @@ export function FeedbackSliderClient({ feedbacks }: FeedbackSliderClientProps) {
                     640: { slidesPerView: 2.2 },
                     1024: { slidesPerView: 3.2 },
                 }}
+                loop={true}
                 onSwiper={() => setReady(true)}
                 onError={() => setError(true)}
                 className={`!overflow-visible pb-2 transition-opacity duration-300 ${ready ? 'opacity-100' : 'opacity-0'}`}

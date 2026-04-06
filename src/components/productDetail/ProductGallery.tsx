@@ -23,7 +23,7 @@ export function ProductGallery({ productPromise }: Props) {
                         <button
                             key={i}
                             onClick={() => setSelectedIndex(i)}
-                            className={`relative flex-1 rounded-xl overflow-hidden border-2 transition-colors ${
+                            className={`relative flex-1 rounded-xl overflow-hidden border-2 transition-colors cursor-pointer ${
                                 selectedIndex === i
                                     ? 'border-black'
                                     : 'border-transparent bg-gray-100'
@@ -50,7 +50,7 @@ export function ProductGallery({ productPromise }: Props) {
                         href={src}
                         className={
                             i === selectedIndex
-                                ? 'relative block w-full h-full'
+                                ? 'relative block w-full h-full cursor-pointer'
                                 : 'hidden'
                         }
                     >

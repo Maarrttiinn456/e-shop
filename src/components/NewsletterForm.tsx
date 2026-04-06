@@ -58,7 +58,7 @@ export function NewsletterForm() {
 
                     <button
                         type="submit"
-                        className="w-full rounded-full bg-white text-black font-medium py-3 text-sm hover:bg-gray-100 transition-colors"
+                        className="w-full rounded-full bg-white text-black font-medium py-3 text-sm hover:bg-gray-100 transition-colors cursor-pointer"
                     >
                         Subscribe to Newsletter
                     </button>

@@ -10,7 +10,7 @@ export function HeaderActionButtons() {
     return (
         <div className="flex items-center gap-3.5 shrink-0">
             {/* Lupa – jen mobil */}
-            <button className="md:hidden" aria-label="Hledat">
+            <button className="md:hidden cursor-pointer" aria-label="Hledat">
                 <svg
                     width="24"
                     height="24"
@@ -35,7 +35,7 @@ export function HeaderActionButtons() {
             </button>
 
             {/* Košík */}
-            <Link href="/cart" aria-label="Košík" className="relative">
+            <Link href="/cart" aria-label="Košík" className="relative cursor-pointer">
                 <ShoppingCart size={24} strokeWidth={1.8} />
                 {allCartItems > 0 && (
                     <span className="absolute -top-2 -right-2 bg-[#FF3333] text-white text-[10px] font-body font-semibold leading-none w-[18px] h-[18px] rounded-full flex items-center justify-center">
@@ -45,7 +45,7 @@ export function HeaderActionButtons() {
             </Link>
 
             {/* Uživatel */}
-            <button aria-label="Profil">
+            <button aria-label="Profil" className="cursor-pointer">
                 <svg
                     width="24"
                     height="24"

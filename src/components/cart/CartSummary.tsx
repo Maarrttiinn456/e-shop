@@ -55,7 +55,7 @@ export function CartSummary() {
                 type="button"
                 onClick={handleCheckout}
                 disabled={loading || items.length === 0}
-                className="mt-2 w-full py-3 rounded-full bg-black text-white font-body text-sm font-medium hover:bg-black/80 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                className="mt-2 w-full py-3 rounded-full bg-black text-white font-body text-sm font-medium hover:bg-black/80 transition-colors cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
             >
                 {loading ? 'Přesměrovávám...' : 'Přejít k platbě'}
             </button>

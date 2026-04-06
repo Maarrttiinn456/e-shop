@@ -42,7 +42,7 @@ export function CartItems() {
                         <div className="flex items-center gap-1 mt-1">
                             <button
                                 onClick={() => decreaseItem(item.product.id)}
-                                className="w-7 h-7 flex items-center justify-center rounded-md border border-black/15 text-black/60 hover:bg-black/5 hover:text-black transition-colors"
+                                className="w-7 h-7 flex items-center justify-center rounded-md border border-black/15 text-black/60 hover:bg-black/5 hover:text-black transition-colors cursor-pointer"
                                 aria-label="Snížit množství"
                             >
                                 <Minus size={13} />
@@ -50,7 +50,7 @@ export function CartItems() {
                             <span className="font-body text-sm w-6 text-center tabular-nums">{item.quantity}</span>
                             <button
                                 onClick={() => addItem(item.product)}
-                                className="w-7 h-7 flex items-center justify-center rounded-md border border-black/15 text-black/60 hover:bg-black/5 hover:text-black transition-colors"
+                                className="w-7 h-7 flex items-center justify-center rounded-md border border-black/15 text-black/60 hover:bg-black/5 hover:text-black transition-colors cursor-pointer"
                                 aria-label="Zvýšit množství"
                             >
                                 <Plus size={13} />
@@ -60,7 +60,7 @@ export function CartItems() {
                     <div className="flex flex-col items-end gap-2">
                         <button
                             onClick={() => removeItem(item.product.id)}
-                            className="text-red-400 hover:text-red-600 transition-colors"
+                            className="text-red-400 hover:text-red-600 transition-colors cursor-pointer"
                             aria-label="Odebrat položku"
                         >
                             <Trash2 size={16} />
