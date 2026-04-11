@@ -6,7 +6,7 @@ on:
 
 env:
     REGISTRY: ghcr.io
-    IMAGE_NAME: ${{ github.repository }}
+    # Tady už nedefinujeme IMAGE_NAME napevno, protože ho změníme v kroku níže
 
 jobs:
     build-and-push:
@@ -18,6 +18,11 @@ jobs:
         steps:
             - name: Checkout code
               uses: actions/checkout@v4
+
+            # TENTO KROK OPRAVUJE TVOJI CHYBU: Převede název na malá písmena
+            - name: Lowercase repo name
+              run: |
+                  echo "IMAGE_NAME=${GITHUB_REPOSITORY@L}" >> ${GITHUB_ENV}
 
             - name: Set up QEMU
               uses: docker/setup-qemu-action@v3
@@ -38,12 +43,17 @@ jobs:
                   context: .
                   push: true
                   platforms: linux/arm64
+                  # Používáme tu proměnnou, kterou jsme si "zmalopísmenkovali"
                   tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
 
     deploy:
         needs: build-and-push
         runs-on: ubuntu-latest
         steps:
+            - name: Lowercase repo name
+              run: |
+                  echo "IMAGE_NAME=${GITHUB_REPOSITORY@L}" >> ${GITHUB_ENV}
+
             - name: Deploy to VPS via SSH
               uses: appleboy/ssh-action@v1.0.3
               with:
