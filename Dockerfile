@@ -1,6 +1,7 @@
 FROM node:20-slim AS deps
 WORKDIR /app
 COPY package*.json ./
+ENV npm_config_arch=arm64
 RUN npm ci
 
 FROM node:20-slim AS builder
