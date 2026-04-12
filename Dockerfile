@@ -8,7 +8,7 @@ WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 ENV NEXT_TELEMETRY_DISABLED=1
-RUN npm rebuild
+RUN npm rebuild --build-from-source
 RUN npm run build
 
 FROM node:20-alpine AS runner
