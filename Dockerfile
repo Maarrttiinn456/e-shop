@@ -2,10 +2,8 @@ FROM node:20-slim AS builder
 
 WORKDIR /usr/src/app
 
-COPY package*.json ./
+COPY package*.json .npmrc ./
 RUN npm install
-# explicitně doinstaluj arm64 variantu lightningcss
-RUN npm install --cpu=arm64 --os=linux lightningcss
 
 COPY . .
 RUN npm run build
