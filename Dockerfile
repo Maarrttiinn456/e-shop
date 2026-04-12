@@ -2,8 +2,9 @@ FROM node:20-slim AS builder
 
 WORKDIR /usr/src/app
 
-COPY package*.json .npmrc ./
-RUN npm install
+COPY package*.json ./
+RUN npm install --prefer-dedupe \
+    && npm install --cpu=arm64 --os=linux --libc=glibc lightningcss @tailwindcss/oxide
 
 COPY . .
 RUN npm run build
