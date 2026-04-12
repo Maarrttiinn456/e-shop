@@ -4,6 +4,8 @@ WORKDIR /usr/src/app
 
 COPY package*.json ./
 RUN npm install
+# explicitně doinstaluj arm64 variantu lightningcss
+RUN npm install --cpu=arm64 --os=linux lightningcss
 
 COPY . .
 RUN npm run build
