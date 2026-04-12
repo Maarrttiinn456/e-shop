@@ -1,26 +1,23 @@
-FROM node:20-slim AS deps
-WORKDIR /app
-COPY package*.json ./
-RUN npm ci
+# Dockerfile
 
-FROM node:20-slim AS builder
-WORKDIR /app
-COPY --from=deps /app/node_modules ./node_modules
+# Use the official Node.js image.
+FROM node:14
+
+# Create app directory
+WORKDIR /usr/src/app
+
+# Install app dependencies using npm
+# Install build dependencies
+RUN apt-get update && apt-get install -y \
+    build-essential \
+    && npm install --no-optional \
+    && npm cache clean --force
+
+# Bundle app source
 COPY . .
-ENV NEXT_TELEMETRY_DISABLED=1
-RUN npm rebuild --build-from-source
+
+# Build the project
 RUN npm run build
 
-FROM node:20-alpine AS runner
-WORKDIR /app
-ENV NODE_ENV=production
-ENV NEXT_TELEMETRY_DISABLED=1
-RUN addgroup --system --gid 1001 nodejs
-RUN adduser --system --uid 1001 nextjs
-COPY --from=builder /app/public ./public
-COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
-COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
-USER nextjs
-EXPOSE 3000
-ENV PORT=3000
-CMD ["node", "server.js"]
+# Start the application
+CMD [ "npm", "start" ]
