@@ -1,70 +1,56 @@
-name: Deploy Next.js to Hetzner
+name: Deploy Next.js Eshop (SSR)
 
 on:
     push:
-        branches: [main]
-
-env:
-    REGISTRY: ghcr.io
-    # Tady už nedefinujeme IMAGE_NAME napevno, protože ho změníme v kroku níže
+        branches:
+            - main # Zkontroluj, zda se tvá hlavní větev jmenuje main
 
 jobs:
-    build-and-push:
+    build-and-deploy:
         runs-on: ubuntu-latest
-        permissions:
-            contents: read
-            packages: write
 
         steps:
-            - name: Checkout code
+            # 1. Stažení kódu
+            - name: Checkout repository
               uses: actions/checkout@v4
 
-            - name: Lowercase repo name
-              run: |
-                  echo "IMAGE_NAME=${GITHUB_REPOSITORY@L}" >> ${GITHUB_ENV}
-
-            - name: Set up QEMU
-              uses: docker/setup-qemu-action@v3
-
-            - name: Set up Docker Buildx
-              uses: docker/setup-buildx-action@v3
-
-            - name: Log in to the Container registry
-              uses: docker/login-action@v3
+            # 2. Nastavení Node.js (v22 pro moderní Next.js)
+            - name: Setup Node.js
+              uses: actions/setup-node@v4
               with:
-                  registry: ${{ env.REGISTRY }}
-                  username: ${{ github.actor }}
-                  password: ${{ secrets.GITHUB_TOKEN }}
+                  node-version: 22
+                  cache: 'npm'
 
-            - name: Build and push Docker image
-              uses: docker/build-push-action@v5
+            # 3. Instalace závislostí a Build
+            - name: Install dependencies
+              run: npm install
+
+            - name: Build Next.js project
+              run: npm run build
+
+            # 4. Synchronizace souborů na server (vše kromě node_modules a gitu)
+            - name: Deploy to Server via SSH
+              uses: easingthemes/ssh-deploy@main
               with:
-                  context: .
-                  push: true
-                  platforms: linux/arm64
-                  tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
+                  SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+                  REMOTE_HOST: ${{ secrets.SERVER_IP }}
+                  REMOTE_USER: ${{ secrets.SERVER_USER }}
+                  SOURCE: './'
+                  TARGET: '/var/www/eshop/'
+                  ARGS: "-rlgoDzvc -i --delete --exclude='node_modules' --exclude='.git' --exclude='.github'"
 
-    deploy:
-        needs: build-and-push
-        runs-on: ubuntu-latest
-        steps:
-            - name: Lowercase repo name
-              run: |
-                  echo "IMAGE_NAME=${GITHUB_REPOSITORY@L}" >> ${GITHUB_ENV}
-
-            - name: Deploy to VPS via SSH
-              uses: appleboy/ssh-action@v1.0.3
+            # 5. Restartování aplikace přes PM2 na serveru
+            - name: SSH Remote Commands (Restart PM2)
+              uses: appleboy/ssh-action@master
               with:
-                  host: ${{ secrets.HOST }}
-                  username: ${{ secrets.USERNAME }}
+                  host: ${{ secrets.SERVER_IP }}
+                  username: ${{ secrets.SERVER_USER }}
                   key: ${{ secrets.SSH_PRIVATE_KEY }}
                   script: |
-                      echo ${{ secrets.GITHUB_TOKEN }} | docker login ghcr.io -u ${{ github.actor }} --password-stdin
-                      docker pull ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
-                      docker stop web-app || true
-                      docker rm web-app || true
-                      docker run -d \
-                        --name web-app \
-                        --restart always \
-                        -p 80:3000 \
-                        ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
+                      cd /var/www/eshop
+                      # Instalace pouze produkčních balíčků přímo na serveru
+                      npm install --production
+                      # Restartování procesu v PM2, nebo jeho spuštění pokud ještě neběží
+                      pm2 restart eshop || pm2 start npm --name "eshop" -- start
+                      # Uložení stavu PM2 pro případ restartu celého VPS
+                      pm2 save
