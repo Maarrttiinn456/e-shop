@@ -1,4 +1,4 @@
-name: Deploy Next.js Eshop (SSR)
+name: Deploy Next.js E-shop (SSR)
 
 on:
     push:
