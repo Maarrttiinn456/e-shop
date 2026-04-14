@@ -47,10 +47,9 @@ jobs:
                   username: ${{ secrets.SERVER_USER }}
                   key: ${{ secrets.SSH_PRIVATE_KEY }}
                   script: |
+                      export NVM_DIR="$HOME/.nvm"
+                      [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
                       cd /var/www/eshop
-                      # Instalace pouze produkčních balíčků přímo na serveru
                       npm install --production
-                      # Restartování procesu v PM2, nebo jeho spuštění pokud ještě neběží
                       pm2 restart eshop || pm2 start npm --name "eshop" -- start
-                      # Uložení stavu PM2 pro případ restartu celého VPS
                       pm2 save
